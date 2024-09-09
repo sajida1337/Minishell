@@ -11,7 +11,7 @@ CFLAGS = -Wall -Wextra -Werror
 RM = rm -rf
 
 #Files:
-SRC = pwd.c
+SRC = pwd.c echo.c
 
 OBJ = ${SRC:.c=.o}
 
@@ -28,7 +28,7 @@ $(LIBFT):
 
 $(NAME) : $(OBJ) $(LIBFT)
 	@echo "$(BLUE)Making $(NAME) .. 👾 $(RESET)"
-	cc $(CFLAGS)  $(OBJ) -o $(NAME)
+	cc $(CFLAGS)  $(OBJ) $(LIBFT) -o $(NAME)
 
 clean :
 	@echo "$(GREEN0)cleaning ..."

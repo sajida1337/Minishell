@@ -1,6 +1,7 @@
+
 #include "minishell.h"
 
-int main()
+void pwd()
 {
     char buffer[1024];
     char *pwd;
@@ -9,4 +10,5 @@ int main()
         perror(NULL);
     else 
         printf("%s\n", pwd);
+
 }
