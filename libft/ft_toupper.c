@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_toupper.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: salaoui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/03 10:58:19 by saait-si          #+#    #+#             */
-/*   Updated: 2023/12/07 23:06:45 by saait-si         ###   ########.fr       */
+/*   Created: 2023/11/03 19:01:27 by salaoui           #+#    #+#             */
+/*   Updated: 2023/11/22 21:11:29 by salaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_toupper(int c)
 {
-	if (c > 96 && c < 123)
+	if (c >= 'a' && c <= 'z')
+	{
 		c -= 32;
+	}
 	return (c);
 }

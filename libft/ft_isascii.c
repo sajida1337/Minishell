@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isascii.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: salaoui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/03 04:48:25 by saait-si          #+#    #+#             */
-/*   Updated: 2023/12/07 22:49:20 by saait-si         ###   ########.fr       */
+/*   Created: 2023/11/02 11:22:24 by salaoui           #+#    #+#             */
+/*   Updated: 2023/11/22 15:28:18 by salaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "libft.h"
+
 int	ft_isascii(int c)
 {
-	if (c >= 0 && c <= 127)
-		return (1);
-	return (0);
+	if (!(c >= 0 && c <= 127))
+	{
+		return (0);
+	}
+	return (1);
 }

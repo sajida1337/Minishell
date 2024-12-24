@@ -3,33 +3,58 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: salaoui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/03 12:06:49 by saait-si          #+#    #+#             */
-/*   Updated: 2023/12/07 14:20:28 by saait-si         ###   ########.fr       */
+/*   Created: 2023/11/07 11:12:03 by salaoui           #+#    #+#             */
+/*   Updated: 2023/12/08 20:54:16 by salaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
+static char	*comp_func(const char *s, const char *need, size_t i, size_t l)
+{
+	const char	*temp_s1;
+	const char	*temp_s2;
+	int			t;
+
+	temp_s1 = s;
+	temp_s2 = need;
+	if (*s == *need)
+		t = i;
+	while (*temp_s2 != '\0' && *temp_s1 == *temp_s2 && i < l)
+	{
+		temp_s1++;
+		temp_s2++;
+		i++;
+	}
+	if (*temp_s2 != '\0')
+	{
+		i = t;
+		return (NULL);
+	}
+	if (*temp_s2 == '\0')
+	{
+		return ((char *)(s));
+	}
+	return (NULL);
+}
+
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
 {
 	size_t	i;
-	size_t	j;
+	char	*result;
 
 	i = 0;
-	if (ft_strlen(needle) == 0)
+	if (*needle == '\0')
 		return ((char *)haystack);
-	while (i < len && haystack[i])
+	while (*haystack != '\0' && i < len)
 	{
-		j = 0;
-		while (haystack[i + j] == needle[j] && needle[j] && haystack[i + j] \
-		&& (i + j) < len)
-			j++;
-		if (!needle[j])
-			return ((char *)haystack + i);
-		else
-			i++;
+		result = comp_func(haystack, needle, i, len);
+		if (result != NULL)
+			return (result);
+		haystack++;
+		i++;
 	}
 	return (0);
 }

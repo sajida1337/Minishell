@@ -3,60 +3,64 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: salaoui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/06 20:35:11 by alaktari          #+#    #+#             */
-/*   Updated: 2023/12/07 13:20:28 by saait-si         ###   ########.fr       */
+/*   Created: 2023/11/11 20:12:46 by salaoui           #+#    #+#             */
+/*   Updated: 2023/12/08 20:46:59 by salaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static size_t	digits_len(int n)
+static int	ft_len(int n)
 {
-	size_t	the_len;
+	int	len;
 
-	the_len = 0;
-	if (n == 0)
-		return (1);
-	if (n == -2147483648)
-		return (11);
-	if (n == 2147483647)
-		return (10);
-	if (n < 0)
-		the_len++;
+	len = 0;
+	if (n <= 0)
+	{
+		len = 1;
+	}
 	while (n != 0)
 	{
+		len++;
 		n = n / 10;
-		the_len++;
 	}
-	return (the_len);
+	return (len);
+}
+
+static char	*ft_putchar(char *ptr, unsigned int n, int len)
+{
+	while (n > 0)
+	{
+		ptr[len--] = 48 + (n % 10);
+		n = n / 10;
+	}
+	return (ptr);
 }
 
 char	*ft_itoa(int n)
 {
-	size_t	i;
-	size_t	x;
-	char	*fun_itoa;
+	int				len;
+	char			*ptr;
+	unsigned int	number;
 
-	i = 0;
-	x = digits_len(n);
-	fun_itoa = malloc(sizeof(char) * (x + 1));
-	if (!(fun_itoa))
+	len = ft_len(n);
+	ptr = malloc((len + 1) * sizeof(char));
+	if (ptr == NULL)
 		return (NULL);
-	fun_itoa[x] = '\0';
+	ptr[len--] = '\0';
+	if (n == 0)
+	{
+		ptr[0] = '0';
+	}
 	if (n < 0)
 	{
-		fun_itoa[0] = '-';
-		i = 1;
+		number = n * -1;
+		ptr[0] = '-';
 	}
-	while (x-- > i)
-	{
-		if (n < 0)
-			fun_itoa[x] = '0' + (n % 10) * (-1);
-		else
-			fun_itoa[x] = '0' + (n % 10);
-		n = n / 10;
-	}
-	return (fun_itoa);
+	else
+		number = n;
+	ptr = ft_putchar(ptr, number, len);
+	return (ptr);
 }

@@ -3,19 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: salaoui <salaoui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/02 10:07:03 by saait-si          #+#    #+#             */
-/*   Updated: 2023/12/07 23:37:49 by saait-si         ###   ########.fr       */
+/*   Created: 2023/11/02 17:57:28 by salaoui           #+#    #+#             */
+/*   Updated: 2024/12/18 13:59:58 by salaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_bzero(void *s, size_t n)
+void	ft_bzero(void *str, size_t n)
 {
-	while (n--)
+	char	*p;
+	int		i;
+
+	i = 0;
+	p = str;
+	while (n-- > 0)
 	{
-		*(unsigned char *)s++ = 0;
+		p[i] = '\0';
+		i++;
 	}
 }

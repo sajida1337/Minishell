@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: salaoui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/04 21:11:28 by saait-si          #+#    #+#             */
-/*   Updated: 2023/12/09 15:46:21 by saait-si         ###   ########.fr       */
+/*   Created: 2023/11/14 15:00:27 by salaoui           #+#    #+#             */
+/*   Updated: 2023/12/08 23:05:31 by salaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,14 @@
 
 void	ft_putstr_fd(char *s, int fd)
 {
-	size_t	i;
+	int	i;
 
-	i = 0;
 	if (!s || fd < 0)
-	{
 		return ;
-	}
-	while (s[i])
+	i = 0;
+	while (s[i] != '\0')
 	{
-		ft_putchar_fd(s[i], fd);
+		write(fd, &s[i], 1);
 		i++;
 	}
 }

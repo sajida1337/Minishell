@@ -1,21 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstdelone_bonus.c                               :+:      :+:    :+:   */
+/*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/06 23:17:38 by saait-si          #+#    #+#             */
-/*   Updated: 2023/12/09 14:30:27 by saait-si         ###   ########.fr       */
+/*   Created: 2024/12/17 22:02:03 by saait-si          #+#    #+#             */
+/*   Updated: 2024/12/17 22:02:04 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
-void	ft_lstdelone(t_list *lst, void (*del)(void *))
+void	ft_pwd(t_node *node)
 {
-	if (!lst || !del)
-		return ;
-	del(lst->content);
-	free(lst);
+	char	pwd[PATH_MAX];
+
+	if (getcwd(pwd, sizeof(pwd)) != NULL)
+	{
+		write(node->out_file, pwd, ft_strlen(pwd));
+		write(node->out_file, "\n", 1);
+	}
+	else
+		perror("PWD");
 }

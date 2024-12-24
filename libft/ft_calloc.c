@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: saait-si <saait-si@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/02 10:33:32 by saait-si          #+#    #+#             */
-/*   Updated: 2024/09/08 17:14:45 by saait-si         ###   ########.fr       */
+/*   Created: 2023/11/07 12:22:12 by salaoui           #+#    #+#             */
+/*   Updated: 2024/09/21 00:57:17 by saait-si         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,19 @@
 
 void	*ft_calloc(size_t count, size_t size)
 {
+	size_t	i;
 	void	*ptr;
 
+	i = 0;
 	if (size != 0)
 		return (NULL);
 	ptr = malloc(count * size);
-	if (!ptr)
+	if (ptr == NULL)
 		return (NULL);
-	ft_bzero(ptr, count * size);
+	while (i < (count * size))
+	{
+		*((char *)ptr + i) = 0;
+		i++;
+	}
 	return (ptr);
 }

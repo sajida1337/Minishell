@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstclear_bonus.c                                :+:      :+:    :+:   */
+/*   execution_utils.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: salaoui <salaoui@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/07 14:44:04 by saait-si          #+#    #+#             */
-/*   Updated: 2023/12/09 12:48:18 by saait-si         ###   ########.fr       */
+/*   Created: 2024/12/17 22:01:30 by saait-si          #+#    #+#             */
+/*   Updated: 2024/12/18 13:10:36 by salaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../minishell.h"
 
-void	ft_lstclear(t_list **lst, void (*del)(void *))
+int	put_env_null_word(char *str, char *word, int *i, int *j)
 {
-	t_list	*tmp;
+	size_t	l;
 
-	if (!lst || !del)
-		return ;
-	while (*lst)
-	{
-		tmp = *lst;
-		*lst = (*lst)->next;
-		ft_lstdelone(tmp, del);
-	}
+	l = 0;
+	(*i)++;
+	while (check_is_num(str, *i) == 1)
+		(*i)++;
+	while (str[*i])
+		word[(*j)++] = str[(*i)++];
+	word[*j] = '\0';
+	return (l);
 }

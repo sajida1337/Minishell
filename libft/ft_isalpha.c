@@ -3,16 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: saait-si <saait-si@student.1337.ma>        +#+  +:+       +#+        */
+/*   By: salaoui <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/12/03 04:47:01 by saait-si          #+#    #+#             */
-/*   Updated: 2023/12/07 22:49:15 by saait-si         ###   ########.fr       */
+/*   Created: 2023/11/02 10:58:58 by salaoui           #+#    #+#             */
+/*   Updated: 2023/11/20 12:14:10 by salaoui          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int c)
+#include "libft.h"
+
+int	ft_isalpha(int str)
 {
-	if ((c >= 65 && c <= 90) || (c >= 97 && c <= 122))
-		return (1);
-	return (0);
+	if (str < 'A' || (str > 'Z' && str < 'a') || str > 'z')
+	{
+		return (0);
+	}
+	return (1);
 }
